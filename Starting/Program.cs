@@ -32,10 +32,11 @@ namespace Starting {
         private static void GuessTheNumber() {
             Random random = new Random();
             int secretNumber = random.Next(1, 1001);
-            int maxAttempts = 10;
+            int maxAttempts = 15;
+            int minAttempts = 5;
 
             Console.WriteLine("yek adad bin 1 ta 1000 entekhab shodeh ast.");
-            Console.WriteLine("shoma 10 martabeh forsat darid ta an ra hads bezanid.");
+            Console.WriteLine("shoma hadeaghal 5 martabeh va hadeaksar 15 martabe vaght has zadan dari.");
 
             bool win = false;
 
