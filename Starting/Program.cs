@@ -47,7 +47,7 @@ namespace Starting
                 Console.Write("vorodi na motabar ast bayad bozorg tar az hadeaghal bashad dobareh vared konid");
             }
             int SecretNumber = random.Next(minRenge,maxRenge + 1);
-            Console.WriteLine("yek adad beyne {minRange} ta {maxRenge} entekhab shodeh ast");
+            Console.WriteLine($"yek adad beyne {minRenge} ta {maxRenge} entekhab shodeh ast");
 
 
 
