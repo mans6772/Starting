@@ -37,10 +37,18 @@ namespace Starting
         private static void GuessTheNumber()
         {
             Random random = new Random();
-            int secretNumber = random.Next(1, 1001);
+            int minRenge , maxRenge;
+            Console.Write("hadeaghal adad baraye mahdodeh ra vared konid");
+            while(!int.TryParse(Console.ReadLine(), out minRenge)) ;
+          
+            Console.Write("hade aksar adade baraye mahdodeh ra vared konid");
+            while (!int.TryParse(Console.ReadLine(),out maxRenge) || maxRenge <= minRenge)
+            {
+                Console.Write("vorodi na motabar ast bayad bozorg tar az hadeaghal bashad dobareh vared konid");
+            }
+            int SecretNumber = random.Next(minRenge,maxRenge + 1);
+            Console.WriteLine("yek adad beyne {minRange} ta {maxRenge} entekhab shodeh ast");
 
-            Console.WriteLine("yek adad beyne 1 ta 1000 entekhab shodeh ast.");
-            Console.Write("tedada dafatey ke mikhayd hads bezanid ra varedkonid (hadeaksar 15 martabeh): ");
 
 
             string attemptsInput = Console.ReadLine();
@@ -65,13 +73,13 @@ namespace Starting
                     continue;
                 }
 
-                if (guess == secretNumber)
+                if (guess ==SecretNumber)
                 {
                     Console.WriteLine("adadeh vared shodeh sahih ast shoma barandeh shodid!");
                     win = true;
                     break;
                 }
-                else if (guess < secretNumber)
+                else if (guess < SecretNumber)
                 {
                     Console.WriteLine("adadeh varedh shodeh kochektar ast az adadeh moredeh nazar.");
                 }
@@ -83,7 +91,7 @@ namespace Starting
 
             if (!win)
             {
-                Console.WriteLine($"moteastefam shoma natavanestin adadehdorost ra hasbezanin: {secretNumber}");
+                Console.WriteLine($"moteastefam shoma natavanestin adadehdorost ra hasbezanin: {SecretNumber}");
             }
 
             Console.WriteLine("baray khoroj kilidira feshar dahid...");
