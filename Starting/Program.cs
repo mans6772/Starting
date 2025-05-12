@@ -1,18 +1,23 @@
 ﻿using System;
 
-namespace Starting {
-    internal class Program {
-        static void Main(string[] args) {
+namespace Starting
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
 
             GuessTheNumber();
             //MakeFibonacciSeries();
 
         }
 
-        private static void MakeFibonacciSeries() {
+        private static void MakeFibonacciSeries()
+        {
             int n = 10;
             int a = 0, b = 1;
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++)
+            {
                 Console.WriteLine(a);
                 int temp = a + b;
                 a = b;
@@ -29,57 +34,60 @@ namespace Starting {
             Environment.Exit(0);
         }
 
-        private static void GuessTheNumber() {
+        private static void GuessTheNumber()
+        {
             Random random = new Random();
             int secretNumber = random.Next(1, 1001);
-            int maxAttempts = 15;
-            int minAttempts = 5;
 
-            Console.WriteLine("yek adad bin 1 ta 1000 entekhab shodeh ast.");
-            Console.WriteLine("shoma hadeaghal 5 martabeh va hadeaksar 15 martabe vaght has zadan dari.");
+            Console.WriteLine("yek adad beyne 1 ta 1000 entekhab shodeh ast.");
+            Console.Write("tedada dafatey ke mikhayd hads bezanid ra varedkonid (hadeaksar 15 martabeh): ");
+
+
+            string attemptsInput = Console.ReadLine();
+            int maxAttempts;
+            while (!int.TryParse(attemptsInput, out maxAttempts) || maxAttempts < 1 || maxAttempts > 15)
+            {
+                Console.Write("vorodi namotabarhastbeyn adade 1ta 15 entekhab konid: ");
+                attemptsInput = Console.ReadLine();
+            }
 
             bool win = false;
 
-            for (int attempt = 1; attempt <= maxAttempts; attempt++) {
-                Console.WriteLine();
-                Console.Write($"Chance {attempt}: ");
+            for (int attempt = 1; attempt <= maxAttempts; attempt++)
+            {
+                Console.Write($"hadse shomare {attempt}: ");
                 string input = Console.ReadLine();
 
-                if (!int.TryParse(input, out int guess)) {
-                    Console.WriteLine("adadeh vorodi namotabar ast! faghat kafist vard konid.");
-                    attempt--;
+                if (!int.TryParse(input, out int guess))
+                {
+                    Console.WriteLine("adadehvorodinamotabar hast  faghat adadeh sahih vared konid.");
+                    attempt--;  
                     continue;
                 }
 
-                if (guess == secretNumber) {
+                if (guess == secretNumber)
+                {
+                    Console.WriteLine("adadeh vared shodeh sahih ast shoma barandeh shodid!");
                     win = true;
                     break;
                 }
-
-                if (guess < secretNumber) {
-                    Console.WriteLine("adadeh vard shodeh kuchekter az adadi keh hast.");
+                else if (guess < secretNumber)
+                {
+                    Console.WriteLine("adadeh varedh shodeh kochektar ast az adadeh moredeh nazar.");
                 }
-                else {
-                    Console.WriteLine("adadeh vard shodeh bozorgtar az adadi keh hast.");
+                else
+                {
+                    Console.WriteLine("adadeh varedshodeh bozrg tar aza dadeh mordeh nazar ast.");
                 }
             }
 
-            if (win) {
-                Console.WriteLine("dorost vard kardid barandeh shodid!");
-                Console.ReadKey();
-                End();
+            if (!win)
+            {
+                Console.WriteLine($"moteastefam shoma natavanestin adadehdorost ra hasbezanin: {secretNumber}");
             }
 
-            Console.WriteLine($"mofegh neshodid. moord nazar {secretNumber} bod.");
-            Console.WriteLine();
-            Console.WriteLine("baraye khoroj kilidi ra feshar dahid.");
+            Console.WriteLine("baray khoroj kilidira feshar dahid...");
             Console.ReadKey();
-            End();
         }
-
-        private static void End() {
-            Environment.Exit(0);
-        }
-
     }
 }
